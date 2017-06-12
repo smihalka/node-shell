@@ -26,3 +26,30 @@ module.exports.echo = function(arr){
 	process.stdout.write("prompt > ");
 };
 
+module.exports.cat = function(arr){
+
+	fs.readFile(arr[0], 'utf8', function(err, data){
+		  if (err) throw err;
+			process.stdout.write(data);
+	});
+	setTimeout(function () {
+  	process.stdout.write("prompt > ")
+	}, 500);
+};
+
+
+module.exports.head = function(arr){
+	var array = [];
+	fs.readFile(arr[0], 'utf8', function(err, data){
+		  if (err) throw err;
+				//process.stdout.write(data);
+				var arrayData = data.split("\n");
+			for(var i = 0; i < 5;i++){
+			 	process.stdout.write(arrayData[i] + "\n");
+			 }
+		});
+
+	setTimeout(function () {
+  	process.stdout.write("prompt > ")
+	}, 1000);
+};
